@@ -4,21 +4,27 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-
-import com.woon.memopad.databinding.ActivitySaveMemoBinding;
-
 
 public class SaveMemoActivity extends AppCompatActivity {
+
+    private EditText description;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActivitySaveMemoBinding saveMemoBinding = DataBindingUtil.setContentView(this, R.layout.activity_save_memo);
+        setContentView(R.layout.activity_save_memo);
+
+        initialized();
     }
 
+    private void initialized() {
+        description = findViewById(R.id.description);
+    }
+
+    //메모저장하는 버튼
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.add_memo_menu, menu);
