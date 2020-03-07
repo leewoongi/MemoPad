@@ -15,9 +15,12 @@ public abstract class AppDatabase extends RoomDatabase {
 
 
     //싱글톤
-    private AppDatabase() {   }
+    //  error: AppDatabase() has private access in AppDatabase
+    // 추상클래스에서 생성자를 private 하게 만들어 줄 필요가없음
+    // 생성하면 위에와 같은 에러가 발생함
+    /*private AppDatabase() {   }*/
 
-    public static synchronized  AppDatabase getInstance(Context context){
+    public static synchronized AppDatabase getInstance(Context context){
         if(instance == null){
             instance =  Room.databaseBuilder(context.getApplicationContext(),
                     AppDatabase.class, "memo_Database")
