@@ -11,7 +11,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.woon.memopad.Recycler.RecyclerAdapter;
 import com.woon.memopad.Room.AppDatabase;
 import com.woon.memopad.Room.User;
 
@@ -32,7 +35,9 @@ public class SaveMemoActivity extends AppCompatActivity {
     private void initialized() {
         description = findViewById(R.id.description);
         result = findViewById(R.id.result);
+
         db = AppDatabase.getInstance(this);
+
     }
 
     //메모저장하는 버튼
@@ -48,7 +53,6 @@ public class SaveMemoActivity extends AppCompatActivity {
             case R.id.save:
                 // db에 저장하기
                 db.userDao().insert(new User(description.getText().toString()));
-                result.setText(db.userDao().getAll().toString());
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

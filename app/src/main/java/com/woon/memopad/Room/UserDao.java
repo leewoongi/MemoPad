@@ -25,4 +25,8 @@ public interface UserDao {
 
     @Query("DELETE FROM memoTable")
     void deleteAll();
+
+    @Query("SELECT COUNT(*) as cnt FROM memoTable")
+    int getDataCount();
+
 }
