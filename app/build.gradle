@@ -10,6 +10,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
     }
 
     // 데이터 바인딩
@@ -42,5 +43,8 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0-rc01'
 
     def room_version = "2.2.3"
+
     implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+
 }
