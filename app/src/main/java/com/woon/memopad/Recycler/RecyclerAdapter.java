@@ -15,7 +15,9 @@ import java.util.ArrayList;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyViewHolder> {
 
+
     private ArrayList<User> userData = new ArrayList<>();
+
 
     @NonNull
     @Override
@@ -41,6 +43,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         private TextView key;
+        private TextView title;
         private TextView description;
 
 
@@ -48,13 +51,16 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
             super(itemView);
 
             key = itemView.findViewById(R.id.key);
+            title = itemView.findViewById(R.id.memoTextView1);
             description = itemView.findViewById(R.id.memoTextView2);
         }
 
         public void onBind(User user, int position) {
             String s = "" + (position+1);
             key.setText(s);
+            title.setText(user.getTitle());
             description.setText(user.getDes());
+
         }
     }
 }

@@ -1,6 +1,5 @@
 package com.woon.memopad;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,19 +9,16 @@ import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.woon.memopad.Recycler.RecyclerAdapter;
 import com.woon.memopad.Room.AppDatabase;
-import com.woon.memopad.Room.User;
-import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity {
 
     private FloatingActionButton add;
-    private List<User> userList = null;
 
     //리사이클러 뷰
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
     private RecyclerAdapter adapter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(adapter);
+
 
         add.setOnClickListener(v -> {
             move();
