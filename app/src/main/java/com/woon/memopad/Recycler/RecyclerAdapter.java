@@ -4,10 +4,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.woon.memopad.R;
+import com.woon.memopad.Room.AppDatabase;
 import com.woon.memopad.Room.User;
 
 import java.util.ArrayList;
@@ -36,8 +38,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
         return userData.size();
     }
 
-    public void addItems(User user) {
+    public void addItem(User user) {
         userData.add(user);
+        notifyDataSetChanged();
+    }
+
+    public void addItems(ArrayList<User> users) {
+        userData = users;
         notifyDataSetChanged();
     }
 
@@ -60,6 +67,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
             key.setText(s);
             title.setText(user.getTitle());
             description.setText(user.getDes());
+
+            itemView.setOnLongClickListener(v -> {
+                userData.remove(user);
+                AppDatabase.getInstance(itemView.getContext()).userDao().delete(user);
+
+                notifyDataSetChanged();
+                return false;
+            });
 
         }
     }

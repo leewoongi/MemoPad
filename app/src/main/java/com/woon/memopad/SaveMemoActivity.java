@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Application;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -19,6 +20,7 @@ import com.woon.memopad.Room.User;
 
 public class SaveMemoActivity extends AppCompatActivity {
 
+    private final int REQUEST_CODE = 200;
     private EditText description;
     private TextView result;
     private AppDatabase db;
@@ -71,6 +73,13 @@ public class SaveMemoActivity extends AppCompatActivity {
             db.userDao().insert(memo);
             Toast.makeText(getApplicationContext(),"저장되었습니다",Toast.LENGTH_SHORT).show();
             dialog.dismiss();
+
+            //저장되고 savememoactivity 종료할 때
+            //리사이클러뷰 바로 갱신할 수 있게 해주기 위해 만들어 줌
+            Intent intent = new Intent();
+            intent.putExtra("refresh",REQUEST_CODE);
+            setResult(RESULT_OK, intent);
+            finish();
         });
 
         builder.setNegativeButton("취소", (dialog, which) -> {
