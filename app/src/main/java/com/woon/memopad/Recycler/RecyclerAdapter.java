@@ -1,13 +1,19 @@
 package com.woon.memopad.Recycler;
 
+import android.app.AlertDialog;
+import android.content.Intent;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.woon.memopad.DetailActivity;
 import com.woon.memopad.R;
 import com.woon.memopad.Room.AppDatabase;
 import com.woon.memopad.Room.User;
@@ -76,6 +82,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
                 return false;
             });
 
+            itemView.setOnClickListener(v -> {
+
+                System.out.println("되죠?");
+                Intent intent = new Intent(itemView.getContext(), DetailActivity.class);
+                intent.putExtra("data", user);
+                itemView.getContext().startActivity(intent);
+
+            });
         }
     }
 }
