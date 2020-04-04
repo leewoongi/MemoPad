@@ -53,6 +53,7 @@ public class SaveMemoActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.save:
                 make_title();
+
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

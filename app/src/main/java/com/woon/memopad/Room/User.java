@@ -12,8 +12,11 @@ public class User implements Parcelable {
 
     //Room에서 자동으로 id를 할당
     @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "user_id")
     private int id;
+    @ColumnInfo(name = "user_title")
     private String title;
+    @ColumnInfo(name = "user_des")
     private String des;
 
     public User(String title, String des) {

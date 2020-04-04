@@ -41,7 +41,11 @@ public class DetailActivity extends AppCompatActivity {
         // 수정
         update.setOnClickListener(v -> {
             //문제점 : 그냥 그대로 저장이된다.
-
+            title = detailTitle.getText().toString();
+            des = detailDes.getText().toString();
+            System.out.println("####1" + title + " " +des + " " + id);
+            db.userDao().update(title, des, id);
+            finish();
         });
         //그냥 종료
         exit.setOnClickListener(v -> {
@@ -66,7 +70,6 @@ public class DetailActivity extends AppCompatActivity {
 
         detailTitle.setText(title);
         detailDes.setText(des);
-
     }
 
 

@@ -86,7 +86,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
 
                 Intent intent = new Intent(itemView.getContext(), DetailActivity.class);
                 intent.putExtra("data", user);
-                System.out.println("되죠?");
                 itemView.getContext().startActivity(intent);
 
             });
