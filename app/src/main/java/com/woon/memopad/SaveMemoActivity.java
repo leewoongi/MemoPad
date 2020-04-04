@@ -74,12 +74,6 @@ public class SaveMemoActivity extends AppCompatActivity {
             db.userDao().insert(memo);
             Toast.makeText(getApplicationContext(),"저장되었습니다",Toast.LENGTH_SHORT).show();
             dialog.dismiss();
-
-            //저장되고 savememoactivity 종료할 때
-            //리사이클러뷰 바로 갱신할 수 있게 해주기 위해 만들어 줌
-            Intent intent = new Intent();
-            intent.putExtra("refresh",REQUEST_CODE);
-            setResult(RESULT_OK, intent);
             finish();
         });
 

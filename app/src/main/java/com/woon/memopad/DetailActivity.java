@@ -16,6 +16,7 @@ import com.woon.memopad.Room.AppDatabase;
 import com.woon.memopad.Room.User;
 
 public class DetailActivity extends AppCompatActivity {
+    private final int REQUEST_CODE = 200;
 
     private EditText detailTitle;
     private ImageView detailImage;

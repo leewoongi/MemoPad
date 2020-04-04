@@ -60,21 +60,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void move() {
         Intent intent = new Intent(getApplicationContext(), SaveMemoActivity.class);
-        startActivityForResult(intent,SAVE_MEMO_ACTIVITY);
+        startActivity(intent);
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if(requestCode == SAVE_MEMO_ACTIVITY){
-            if(resultCode == RESULT_OK){
-
-                //리사이클러뷰 update
-                users = AppDatabase.getInstance(this).userDao().getAll();
-                adapter.addItems((ArrayList) users);
-
-            }
-        }
+    protected void onStart() {
+        users = AppDatabase.getInstance(this).userDao().getAll();
+        adapter.addItems((ArrayList) users);
+        super.onStart();
     }
 }
